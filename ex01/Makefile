@@ -3,7 +3,7 @@ NAME = phonebook
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SOURCES = 
+SOURCES = Phonebook.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 %.o: %.cpp
