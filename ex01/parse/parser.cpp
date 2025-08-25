@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.cpp                                      :+:      :+:    :+:   */
+/*   parser.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/07 17:12:24 by pablo             #+#    #+#             */
-/*   Updated: 2025/08/07 21:14:00 by pablo            ###   ########.fr       */
+/*   Created: 2025/08/25 12:45:34 by pablo             #+#    #+#             */
+/*   Updated: 2025/08/25 13:22:23 by pablo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
-#include "General.hpp"
-#include "Contact.hpp"
+#include"../includes/General.hpp"
+
 
 std::string trim(std::string input)
 {
@@ -75,22 +74,3 @@ int input_error(int flag)
     return(0);
 }
 
-int main(void)
-{
-    std::string input;
-    int flag;
-    while (true)
-    {
-        std::cout<<"input comand -> ";
-        std::getline(std::cin,input);
-        input = trim(input);
-        flag = analize_input(input);
-        if (flag == SUCCESS)
-            execute_input(input);
-        else
-            input_error(flag);
-            
-    }
-    
-    return(0);
-}
