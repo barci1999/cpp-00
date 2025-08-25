@@ -17,12 +17,12 @@
 std::string trim(std::string input)
 {
    size_t start = 0;
-   while (start < input.length() && std::isspace(input[start]))
+   while (start < input.length() && std::isspace((unsigned char)input[start]))
    {
         start++;
    }
    size_t end = input.length();
-   while (end > start && std::isspace(input[end -1]))
+   while (end > start && std::isspace((unsigned char)input[end -1]))
    {
         end--;
    }
@@ -33,17 +33,20 @@ std::string trim(std::string input)
 
 int analize_input(std::string input)
 {
-    std::string new_input = trim(input);
-   // std::cout << new_input;
-    if(new_input.empty())
+    if(input.empty())
         return(EMPTY);
-    if(new_input == "SEARCH" || new_input == "ADD" || new_input == "EXIT")
+    if(input == "SEARCH" || input == "ADD" || input == "EXIT")
+    {
+    
+        std::cout << "[" << input << "]" << std::endl;
         return(SUCCESS);
+    }
     return(INVALID);
     
 }
 int execute_input(std::string input)
 {
+
     if(input == "EXIT")
     {
         std::cout<<"bye bye :)"<<std::endl;   
@@ -80,6 +83,7 @@ int main(void)
     {
         std::cout<<"input comand -> ";
         std::getline(std::cin,input);
+        input = trim(input);
         flag = analize_input(input);
         if (flag == SUCCESS)
             execute_input(input);
