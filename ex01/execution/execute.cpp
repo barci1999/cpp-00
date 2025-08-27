@@ -6,7 +6,7 @@
 /*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 13:36:00 by pablo             #+#    #+#             */
-/*   Updated: 2025/08/25 14:43:36 by pablo            ###   ########.fr       */
+/*   Updated: 2025/08/27 16:22:00 by pablo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int execute_input(std::string input,Phonebook& Contact_list)
     }
     else if (input == "SEARCH")
     {
-      // Contact_list.search_Contact();
+        Contact_list.search_contact();
         return(0);
     }
     return(0);  
