@@ -6,7 +6,7 @@
 /*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 18:19:00 by pablo             #+#    #+#             */
-/*   Updated: 2025/08/07 18:28:42 by pablo            ###   ########.fr       */
+/*   Updated: 2025/08/27 13:18:16 by pablo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,27 @@
 
 # include<iostream>
 # include<string>
+# include"../includes/Contact.hpp"
 
-class contact
+class Phonebook
 {
 private:
-    std::string name;
-    std::string last_name;
-    std::string nick_name;
-    std::string telf_number;
-    std::string dark_secret;
-    
+    Contact contact_list[8];
+    int current;
+    int total_contacts;
+public:
+    Phonebook();
+    ~Phonebook();
+    void add_Contact();
+    std::string trim(std::string input);
+    int input_error(int flag);
+    int analize_input(std::string input);
+    std::string trim_and_print(const std::string& prompt);
+  //  void search_Contact();
+//    void take_Exit();
+
 };
+
+
 
 #endif 

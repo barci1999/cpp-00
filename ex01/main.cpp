@@ -6,7 +6,7 @@
 /*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:39:04 by pablo             #+#    #+#             */
-/*   Updated: 2025/08/25 12:51:55 by pablo            ###   ########.fr       */
+/*   Updated: 2025/08/27 12:58:24 by pablo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@
 int main(void)
 {
     std::string input;
+    Phonebook phonebook;
     int flag;
     while (true)
     {
         std::cout<<"input comand -> ";
         std::getline(std::cin,input);
-        input = trim(input);
+        input = phonebook.trim(input);
         flag = analize_input(input);
         if (flag == SUCCESS)
-            execute_input(input);
+            execute_input(input,phonebook);
         else
             input_error(flag);
             
