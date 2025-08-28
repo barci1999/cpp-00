@@ -6,7 +6,7 @@
 /*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:12:24 by pablo             #+#    #+#             */
-/*   Updated: 2025/08/28 10:28:48 by pablo            ###   ########.fr       */
+/*   Updated: 2025/08/28 11:15:51 by pablo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ std::string Phonebook::trim_and_print(const std::string& prompt)
     std::string input;
     std::cout << prompt;
     std::getline(std::cin, input);
+    if(std::cin.eof())
+        return("");
     input = trim(input); 
     return (input);
 }
@@ -65,7 +67,7 @@ int input_error(int flag)
         std::cout << "invalid input please insert correct input" << std::endl;
     return(0);
 }
-void Phonebook::add_Contact()
+int Phonebook::add_Contact()
 {
     Contact temp_contact;
     if(current == 8)
@@ -76,12 +78,13 @@ void Phonebook::add_Contact()
     temp_contact.telf_number = Phonebook::trim_and_print("insert telephone number -> ");
     temp_contact.dark_secret = Phonebook::trim_and_print("insert darkest secret -> ");
     if(!temp_contact.valid_contact())
-        return(void)(std::cout << "Invalid parameters please try again.", std::cout << std::endl);
+        return(std::cout << "Invalid parameters please try again.", std::cout << std::endl, -1);
     contact_list[current] = temp_contact;
     std::cout << "contact added succesfully :)", std::cout << std::endl;
     current = (current + 1) % 8;
     if(total_contacts < 8)
         total_contacts++;
+    return(0);
 }
 void Phonebook::print_contacts()
 {
@@ -99,11 +102,13 @@ void Phonebook::print_contacts()
         std::cout << std::endl;     
     }
 }
-void Phonebook::print_a_contact()
+int Phonebook::print_a_contact()
 {
     int to_print;
     std::string input;
     std::getline(std::cin,input);
+    if(std::cin.eof())
+        return(-1);
     std::istringstream iss(input);
     iss >> to_print;
     if(to_print < 0 || to_print >= total_contacts)
@@ -120,18 +125,20 @@ void Phonebook::print_a_contact()
         std::cout << "Telephone Number -> " << contact_list[to_print].telf_number << std::endl;
         std::cout << "Darkest Secret -> " << contact_list[to_print].dark_secret << std::endl;
     }
-    
+    return(0);
 }
-void Phonebook::search_contact()
+int Phonebook::search_contact()
 {
     
     if (total_contacts == 0)
     {
         std::cout << "No contacts added to list" << std::endl;
-        return;
+        return(0);
     }
     Phonebook::print_contacts();
     std::cout << "please insert desired index -> ";
-    Phonebook::print_a_contact();
+    if(Phonebook::print_a_contact() == -1)
+        return(-1);
+    return(0);
 }
 

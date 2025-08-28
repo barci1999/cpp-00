@@ -6,7 +6,7 @@
 /*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 12:39:04 by pablo             #+#    #+#             */
-/*   Updated: 2025/08/27 12:58:24 by pablo            ###   ########.fr       */
+/*   Updated: 2025/08/28 11:15:02 by pablo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,17 @@ int main(void)
     {
         std::cout<<"input comand -> ";
         std::getline(std::cin,input);
+        if(std::cin.eof())
+            exit(1);
         input = phonebook.trim(input);
         flag = analize_input(input);
         if (flag == SUCCESS)
-            execute_input(input,phonebook);
+        {
+            if(execute_input(input,phonebook) == -1)
+                break;
+        }
         else
-            input_error(flag);
-            
+            input_error(flag); 
     } 
     return(0);
 }
