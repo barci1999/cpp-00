@@ -6,7 +6,7 @@
 /*   By: pablo <pablo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 17:12:24 by pablo             #+#    #+#             */
-/*   Updated: 2025/08/27 18:03:28 by pablo            ###   ########.fr       */
+/*   Updated: 2025/08/28 10:28:48 by pablo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void Phonebook::print_a_contact()
     std::getline(std::cin,input);
     std::istringstream iss(input);
     iss >> to_print;
-    if(to_print > Phonebook::total_contacts)
+    if(to_print < 0 || to_print >= total_contacts)
     {
         std::cout << "invalid index put anotherone -> ";
         Phonebook::print_a_contact();
